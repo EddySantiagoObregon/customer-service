@@ -2,29 +2,79 @@ package com.microservices.customerservice.domain.mapper;
 
 import com.microservices.customerservice.domain.dto.ClienteDto;
 import com.microservices.customerservice.domain.entity.Cliente;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-@Mapper(componentModel = "spring")
-public interface ClienteMapper {
+@Component
+public class ClienteMapper {
 
-    ClienteMapper INSTANCE = Mappers.getMapper(ClienteMapper.class);
+    public Cliente toEntity(ClienteDto clienteDto) {
+        if (clienteDto == null) {
+            return null;
+        }
 
-    @Mapping(target = "id", ignore = true)
-    @Mapping(target = "fechaCreacion", ignore = true)
-    @Mapping(target = "fechaActualizacion", ignore = true)
-    Cliente toEntity(ClienteDto clienteDto);
+        Cliente cliente = new Cliente();
+        cliente.setId(clienteDto.getId());
+        cliente.setContrasena(clienteDto.getContrasena());
+        cliente.setEstado(clienteDto.getEstado());
 
-    ClienteDto toDto(Cliente cliente);
+        // Establecer campos de Persona directamente en Cliente
+        cliente.setNombre(clienteDto.getNombre());
+        cliente.setGenero(clienteDto.getGenero());
+        cliente.setEdad(clienteDto.getEdad());
+        cliente.setIdentificacion(clienteDto.getIdentificacion());
+        cliente.setDireccion(clienteDto.getDireccion());
+        cliente.setTelefono(clienteDto.getTelefono());
 
-    List<ClienteDto> toDtoList(List<Cliente> clientes);
+        return cliente;
+    }
 
-    @Mapping(target = "id", ignore = true)
-    @Mapping(target = "fechaCreacion", ignore = true)
-    @Mapping(target = "fechaActualizacion", ignore = true)
-    Cliente updateEntity(ClienteDto clienteDto, @org.mapstruct.MappingTarget Cliente cliente);
+    public ClienteDto toDto(Cliente cliente) {
+        if (cliente == null) {
+            return null;
+        }
+
+        ClienteDto dto = new ClienteDto();
+        dto.setId(cliente.getId());
+        dto.setContrasena(cliente.getContrasena());
+        dto.setEstado(cliente.getEstado());
+
+        // Obtener campos de Persona directamente de Cliente
+        dto.setNombre(cliente.getNombre());
+        dto.setGenero(cliente.getGenero());
+        dto.setEdad(cliente.getEdad());
+        dto.setIdentificacion(cliente.getIdentificacion());
+        dto.setDireccion(cliente.getDireccion());
+        dto.setTelefono(cliente.getTelefono());
+
+        return dto;
+    }
+
+    public List<ClienteDto> toDtoList(List<Cliente> clientes) {
+        if (clientes == null) {
+            return null;
+        }
+        return clientes.stream()
+                .map(this::toDto)
+                .collect(Collectors.toList());
+    }
+
+    public void updateEntity(ClienteDto clienteDto, Cliente cliente) {
+        if (clienteDto == null || cliente == null) {
+            return;
+        }
+
+        cliente.setContrasena(clienteDto.getContrasena());
+        cliente.setEstado(clienteDto.getEstado());
+
+        // Actualizar campos de Persona directamente en Cliente
+        cliente.setNombre(clienteDto.getNombre());
+        cliente.setGenero(clienteDto.getGenero());
+        cliente.setEdad(clienteDto.getEdad());
+        cliente.setIdentificacion(clienteDto.getIdentificacion());
+        cliente.setDireccion(clienteDto.getDireccion());
+        cliente.setTelefono(clienteDto.getTelefono());
+    }
 }
-

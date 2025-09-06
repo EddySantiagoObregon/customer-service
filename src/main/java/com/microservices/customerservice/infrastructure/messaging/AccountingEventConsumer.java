@@ -1,8 +1,8 @@
 package com.microservices.customerservice.infrastructure.messaging;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.microservices.accountingservice.domain.event.CuentaEvent;
-import com.microservices.accountingservice.domain.event.MovimientoEvent;
+import com.microservices.customerservice.domain.event.CuentaEvent;
+import com.microservices.customerservice.domain.event.MovimientoEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;

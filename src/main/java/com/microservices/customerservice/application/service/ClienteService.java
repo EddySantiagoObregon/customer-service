@@ -6,8 +6,6 @@ import com.microservices.customerservice.domain.exception.ClienteAlreadyExistsEx
 import com.microservices.customerservice.domain.exception.ClienteNotFoundException;
 import com.microservices.customerservice.domain.mapper.ClienteMapper;
 import com.microservices.customerservice.domain.repository.ClienteRepository;
-import com.microservices.customerservice.domain.event.ClienteEvent;
-import com.microservices.customerservice.infrastructure.messaging.ClienteEventProducer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -26,7 +24,6 @@ public class ClienteService {
 
     private final ClienteRepository clienteRepository;
     private final ClienteMapper clienteMapper;
-    private final ClienteEventProducer clienteEventProducer;
 
     public ClienteDto crearCliente(ClienteDto clienteDto) {
         log.info("Creando cliente con identificación: {}", clienteDto.getIdentificacion());
@@ -39,19 +36,6 @@ public class ClienteService {
 
         Cliente cliente = clienteMapper.toEntity(clienteDto);
         Cliente clienteGuardado = clienteRepository.save(cliente);
-        
-        // Publicar evento de cliente creado
-        ClienteEvent evento = ClienteEvent.builder()
-                .eventType("CREATED")
-                .clienteId(clienteGuardado.getId())
-                .identificacion(clienteGuardado.getIdentificacion())
-                .nombre(clienteGuardado.getNombre())
-                .direccion(clienteGuardado.getDireccion())
-                .telefono(clienteGuardado.getTelefono())
-                .estado(clienteGuardado.getEstado())
-                .timestamp(LocalDateTime.now())
-                .build();
-        clienteEventProducer.publishClienteEvent(evento);
         
         log.info("Cliente creado exitosamente con ID: {}", clienteGuardado.getId());
         return clienteMapper.toDto(clienteGuardado);

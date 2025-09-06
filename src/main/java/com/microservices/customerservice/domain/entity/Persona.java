@@ -57,6 +57,16 @@ public abstract class Persona {
     @Column(name = "fecha_actualizacion")
     private LocalDateTime fechaActualizacion;
 
+    public Persona(String nombre, String genero, Integer edad, String identificacion,
+                   String direccion, String telefono) {
+        this.nombre = nombre;
+        this.genero = genero;
+        this.edad = edad;
+        this.identificacion = identificacion;
+        this.direccion = direccion;
+        this.telefono = telefono;
+    }
+
     @PrePersist
     protected void onCreate() {
         fechaCreacion = LocalDateTime.now();

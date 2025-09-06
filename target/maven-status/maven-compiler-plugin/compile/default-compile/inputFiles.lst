@@ -1,0 +1,17 @@
+C:\Users\santi\Desktop\ProyectosPersonales\prueba\customer-service\src\main\java\com\microservices\customerservice\infrastructure\messaging\ClienteEventProducer.java
+C:\Users\santi\Desktop\ProyectosPersonales\prueba\customer-service\src\main\java\com\microservices\customerservice\infrastructure\exception\GlobalExceptionHandler.java
+C:\Users\santi\Desktop\ProyectosPersonales\prueba\customer-service\src\main\java\com\microservices\customerservice\domain\exception\ClienteNotFoundException.java
+C:\Users\santi\Desktop\ProyectosPersonales\prueba\customer-service\src\main\java\com\microservices\customerservice\domain\entity\Persona.java
+C:\Users\santi\Desktop\ProyectosPersonales\prueba\customer-service\src\main\java\com\microservices\customerservice\domain\repository\ClienteRepository.java
+C:\Users\santi\Desktop\ProyectosPersonales\prueba\customer-service\src\main\java\com\microservices\customerservice\domain\dto\ClienteDto.java
+C:\Users\santi\Desktop\ProyectosPersonales\prueba\customer-service\src\main\java\com\microservices\customerservice\domain\event\ClienteEvent.java
+C:\Users\santi\Desktop\ProyectosPersonales\prueba\customer-service\src\main\java\com\microservices\customerservice\infrastructure\config\SwaggerConfig.java
+C:\Users\santi\Desktop\ProyectosPersonales\prueba\customer-service\src\main\java\com\microservices\customerservice\domain\event\MovimientoEvent.java
+C:\Users\santi\Desktop\ProyectosPersonales\prueba\customer-service\src\main\java\com\microservices\customerservice\domain\mapper\ClienteMapper.java
+C:\Users\santi\Desktop\ProyectosPersonales\prueba\customer-service\src\main\java\com\microservices\customerservice\domain\event\CuentaEvent.java
+C:\Users\santi\Desktop\ProyectosPersonales\prueba\customer-service\src\main\java\com\microservices\customerservice\domain\entity\Cliente.java
+C:\Users\santi\Desktop\ProyectosPersonales\prueba\customer-service\src\main\java\com\microservices\customerservice\infrastructure\messaging\AccountingEventConsumer.java
+C:\Users\santi\Desktop\ProyectosPersonales\prueba\customer-service\src\main\java\com\microservices\customerservice\application\service\ClienteService.java
+C:\Users\santi\Desktop\ProyectosPersonales\prueba\customer-service\src\main\java\com\microservices\customerservice\domain\exception\ClienteAlreadyExistsException.java
+C:\Users\santi\Desktop\ProyectosPersonales\prueba\customer-service\src\main\java\com\microservices\customerservice\infrastructure\controller\ClienteController.java
+C:\Users\santi\Desktop\ProyectosPersonales\prueba\customer-service\src\main\java\com\microservices\customerservice\CustomerServiceApplication.java
